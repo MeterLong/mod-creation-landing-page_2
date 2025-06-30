@@ -6,8 +6,8 @@ import { Toaster as SonnerToaster } from "@/components/ui/sonner" // For new toa
 import { Toaster as OldToaster } from "@/components/ui/toaster" // Existing toaster
 
 export const metadata: Metadata = {
-  title: "AI 3D MOD Pro - Minecraft Edition",
-  description: "AI-Powered 3D Model Generation for MOD Creators - Minecraft Style!",
+  title: "Tripo AI For Mod",
+  description: "Tripo AI lets you generate MOD assets in seconds. Free to try. No modeling skills needed.",
   generator: "v0.dev",
 }
 
