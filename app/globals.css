@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 5%; /* Fallback, will be overridden by textures */
+    --foreground: 0 0% 98%;
+
+    --card: 220 15% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 15% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 140 60% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 30% 35%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 220 10% 25%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 45 90% 55%;
+    --accent-foreground: 220 20% 5%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 10% 30%;
+    --input: 220 10% 20%;
+    --ring: 140 60% 55%;
+
+    --radius: 0.25rem;
+
+    --mc-grass: 140 60% 45%;
+    --mc-dirt: 30 30% 35%;
+    --mc-stone: 220 10% 45%;
+    --mc-wood: 30 40% 25%;
+    --mc-sand: 50 50% 70%;
+    --mc-water: 200 70% 50%;
+    --mc-lava: 25 100% 50%;
+    --mc-deepslate: 220 10% 15%;
+    --mc-ui-bg: 220 5% 12%;
+    --mc-ui-border-light: 220 5% 45%;
+    --mc-ui-border-dark: 220 5% 5%;
+    --mc-button-bg: 220 10% 35%;
+    --mc-button-hover-bg: 220 10% 45%;
+    --mc-text: 0 0% 90%;
+    --mc-text-darker: 0 0% 70%;
+    --mc-pixel-border: 2px solid hsl(var(--mc-ui-border-dark));
+    --mc-pixel-border-light: 2px solid hsl(var(--mc-ui-border-light));
+    --mc-pixel-shadow: 2px 2px 0px hsl(var(--mc-ui-border-dark));
+  }
+
+  .dark {
+    --background: 220 10% 8%;
+    --foreground: 0 0% 95%;
+    --card: 220 8% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 8% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 140 65% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 30 35% 40%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 12% 30%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 45 95% 60%;
+    --accent-foreground: 220 10% 8%;
+    --border: 220 12% 35%;
+    --input: 220 12% 25%;
+    --ring: 140 65% 60%;
+
+    --mc-ui-bg: 220 5% 10%;
+    --mc-ui-border-light: 220 5% 40%;
+    --mc-ui-border-dark: 220 5% 3%;
+    --mc-button-bg: 220 10% 30%;
+    --mc-button-hover-bg: 220 10% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  body {
+    @apply text-foreground;
+    font-family: "Press Start 2P", cursive;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+    letter-spacing: 0.5px;
+    background-color: hsl(var(--mc-deepslate)); /* Fallback */
+    background-image: url("/textures/mc-cave-wall.png");
+    background-repeat: repeat;
+    background-size: 128px 128px; /* Adjust size as needed */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground;
+    letter-spacing: 1px;
+  }
+
+  .mc-button {
+    @apply bg-mc-button-bg text-mc-text px-4 py-2 uppercase text-sm tracking-wider;
+    border-top: var(--mc-pixel-border-light);
+    border-left: var(--mc-pixel-border-light);
+    border-bottom: var(--mc-pixel-border);
+    border-right: var(--mc-pixel-border);
+    box-shadow: var(--mc-pixel-shadow);
+    transition: transform 0.05s ease-out, box-shadow 0.05s ease-out;
+  }
+  .mc-button:hover {
+    @apply bg-mc-button-hover-bg;
+  }
+  .mc-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+    border-top: var(--mc-pixel-border);
+    border-left: var(--mc-pixel-border);
+    border-bottom: var(--mc-pixel-border-light);
+    border-right: var(--mc-pixel-border-light);
+  }
+
+  .mc-panel {
+    @apply bg-mc-ui-bg/80 p-4 backdrop-blur-sm; /* Added slight blur for panels on textured bg */
+    border-top: var(--mc-pixel-border-light);
+    border-left: var(--mc-pixel-border-light);
+    border-bottom: var(--mc-pixel-border);
+    border-right: var(--mc-pixel-border);
+  }
+
+  /* Specific textured backgrounds for sections */
+  .bg-mc-texture-dirt {
+    background-image: url("/textures/mc-dirt-texture.png");
+    background-color: hsl(var(--mc-dirt)); /* Fallback */
+    background-repeat: repeat;
+    background-size: 64px 64px; /* Adjust size */
+  }
+  .bg-mc-texture-stone {
+    background-image: url("/textures/mc-stone-texture.png");
+    background-color: hsl(var(--mc-stone)); /* Fallback */
+    background-repeat: repeat;
+    background-size: 64px 64px; /* Adjust size */
+  }
+  .bg-mc-texture-deepslate {
+    background-image: url("/textures/mc-deepslate-texture.png");
+    background-color: hsl(var(--mc-deepslate)); /* Fallback */
+    background-repeat: repeat;
+    background-size: 96px 96px; /* Adjust size */
+  }
+  .bg-mc-texture-grass-top {
+    background-image: url("/textures/mc-grass-top-texture.png");
+    background-color: hsl(var(--mc-grass)); /* Fallback */
+    background-repeat: repeat;
+    background-size: 64px 64px; /* Adjust size */
+  }
+}
